@@ -2,7 +2,7 @@ const Hangman = function (word, numberOfGuesses) {
     this.word = word.toLowerCase().split('')
     this.numberOfGuesses = numberOfGuesses
     this.guessedLetter = []
-    this.status = 'paying'
+    this.status = 'playing'
 }
 
 Hangman.prototype.calculateStatus = function() {
@@ -25,6 +25,16 @@ Hangman.prototype.calculateStatus = function() {
     }
 }
 
+Hangman.prototype.getStatusMessage = function() {
+    if (this.status === 'playing') {
+        return `Guesses left ${this.numberOfGuesses}`
+    } else if (this.status === 'failed') {
+        return `Nice try! The word was "${this.word.join('')}"`
+    } else {
+        return 'Well done! You guessed the word!'
+    }
+}
+
 Hangman.prototype.pazzleGame = function() {
     let puzzle = ''
     this.word.forEach((letter) => {
@@ -41,6 +51,10 @@ Hangman.prototype.myLetter = function(guess) {
     guess = guess.toLowerCase()
     const isUnique = !this.guessedLetter.includes(guess)
     const isBadGuess = !this.word.includes(guess)
+
+    if (this.status !== 'playing') {
+        return
+    }
 
     if (isUnique) {
         this.guessedLetter.push(guess)
