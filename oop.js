@@ -24,7 +24,7 @@ class Hangman {
             this.status = 'playing'
         }
     }
-    getStatusMessage() {
+    get StatusMessage() {
         if (this.status === 'playing') {
             return `Guesses left ${this.numberOfGuesses}`
         } else if (this.status === 'failed') {
@@ -33,7 +33,7 @@ class Hangman {
             return 'Well done! You guessed the word!'
         }
     }
-    pazzleGame() {
+    get pazzleGame() {
         let puzzle = ''
         this.word.forEach((letter) => {
             if(this.guessedLetter.includes(letter)) {
@@ -64,3 +64,18 @@ class Hangman {
         this.calculateStatus()
     }
 }
+
+const data = {
+    locations: [],
+    get location() {
+        return this._location
+    }, 
+    set location(value) {
+        this._location = value.trim()
+        this.locations.push(this._location)
+    }
+}
+
+data.location = '            Sarajevo             '
+data.location = 'London'
+console.log(data)
