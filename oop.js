@@ -9,8 +9,7 @@ class Hangman {
         let finish = true;
 
         this.word.forEach((letter) => {
-            if(this.guessedLetter.includes(letter)) {
-    
+            if(this.guessedLetter.includes(letter) || letter === ' ') {
             } else {
                 finish = false
             }
@@ -36,7 +35,7 @@ class Hangman {
     get pazzleGame() {
         let puzzle = ''
         this.word.forEach((letter) => {
-            if(this.guessedLetter.includes(letter)) {
+            if(this.guessedLetter.includes(letter) || letter === ' ') {
                 puzzle += letter
             } else {
                 puzzle += '*'

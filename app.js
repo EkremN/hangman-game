@@ -4,7 +4,7 @@ const elementH2 = document.createElement('h2')
 const root = document.querySelector("#root")
 const elemtnP = document.createElement('p')
 
-const game1 = new Hangman("laptop", 3) 
+const game1 = new Hangman("Novi Pazar is the best", 3) 
 
 numberOfGuesses.appendChild(elementH2)
 root.appendChild(elemtnP)
